@@ -1,20 +1,16 @@
-
 <template>
   <div class="container">
     <h1>Calculadora Aritmética</h1>
-    
     <div class="calculadora">
-      <!-- Campo para o primeiro número -->
       <div class="input-group">
         <label>Número 1:</label>
         <input 
           type="number" 
           v-model.number="numero1" 
           placeholder="Digite o primeiro número"
-        />
+        >
       </div>
 
-      <!-- Select para escolher a operação -->
       <div class="input-group">
         <label>Operação:</label>
         <select v-model="operacao">
@@ -25,17 +21,15 @@
         </select>
       </div>
 
-      <!-- Campo para o segundo número -->
       <div class="input-group">
         <label>Número 2:</label>
         <input 
           type="number" 
           v-model.number="numero2" 
           placeholder="Digite o segundo número"
-        />
+        >
       </div>
 
-      <!-- Resultado (calculado automaticamente) -->
       <div class="resultado">
         <h2>Resultado:</h2>
         <div class="valor-resultado">{{ resultado }}</div>
@@ -43,14 +37,6 @@
     </div>
   </div>
 </template>
-
-<!-- Exibir expressão completa -->
-<div class="expressao">
-  {{ numero1 }} {{ simboloOperacao }} {{ numero2 }} = 
-</div>
-
-<!-- Botão para limpar campos (opcional) -->
-<button @click="limparCampos">Limpar</button>
 
 <script>
 export default {
@@ -66,7 +52,6 @@ export default {
     resultado() {
       const n1 = this.numero1
       const n2 = this.numero2
-      
       switch (this.operacao) {
         case 'soma':
           return n1 + n2
@@ -75,10 +60,7 @@ export default {
         case 'multiplicacao':
           return n1 * n2
         case 'divisao':
-          if (n2 === 0) {
-            return 'Erro: Divisão por zero!'
-          }
-          return n1 / n2
+          return n2 === 0 ? 'Erro: Divisão por zero!' : n1 / n2
         default:
           return 0
       }
@@ -118,7 +100,8 @@ label {
   color: #333;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -127,7 +110,8 @@ input, select {
   box-sizing: border-box;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: #42b983;
 }
